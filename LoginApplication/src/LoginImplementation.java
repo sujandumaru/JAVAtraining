@@ -5,7 +5,7 @@ public class LoginImplementation {
 	Scanner sc = new Scanner(System.in);
 	static User totalUsers[] = new User[50];
 	static int index = 0;
-	
+
 	void register() {
 		int uid;
 		String firstName, lastName, email, password;
@@ -23,16 +23,16 @@ public class LoginImplementation {
 
 		System.out.print("Mobile number: ");
 		mobileNumber = sc.nextLong();
-		
+
 		System.out.print("Email: ");
 		email = sc.next();
-		
+
 		System.out.print("Password: ");
 		password = sc.next();
-		
+
 		User newUser = new User(uid, firstName, lastName, email, mobileNumber, password);
 		totalUsers[index++] = newUser;
-		
+
 		System.out.println("User Registration complete.");
 		System.out.println();
 	}
@@ -41,25 +41,44 @@ public class LoginImplementation {
 		boolean found = false;
 		if (index == 0)
 			System.out.println("No Users added till now.");
-		for (int i = 0; i < index; i++)
-		{
-			if (totalUsers[i].getEmail().equals(email))
-			{
-				if (totalUsers[i].getPassword().equals(password))
-				{
+		for (int i = 0; i < index; i++) {
+			if (totalUsers[i].getEmail().equals(email)) {
+				if (totalUsers[i].getPassword().equals(password)) {
 					found = true;
 					break;
-				}
-				else
-				{
+				} else {
 					System.out.println("Wrong password.");
 					found = false;
 				}
-			}
-			else
+			} else
 				found = false;
 		}
-		
-		return found;	
+
+		return found;
+	}
+
+	void changePassword(String email) {
+		String pw;
+		boolean found = false;
+		if (index == 0)
+			System.out.println("No Users available.");
+
+		System.out.println();
+		for (int i = 0; i < index; i++) {
+			if (totalUsers[i].getEmail().equals(email)) {
+				System.out.println("Enter your new password: ");
+				pw = sc.next();
+				totalUsers[i].setPassword(pw);
+				System.out.println("Password changed successfully.");
+				found = true;
+				break;
+			} else
+				found = false;
+		}
+
+		if (!found)
+			System.out.println("Couldn't find the email. Please register first.");
+
+		System.out.println();
 	}
 }
