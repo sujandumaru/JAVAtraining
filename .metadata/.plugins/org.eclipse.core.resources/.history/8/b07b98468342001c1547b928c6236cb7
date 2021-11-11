@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+public class LoginPage {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		int choice;
+		LoginImplementation login= new LoginImplementation();
+		while (true)
+		{
+			System.out.println("1. Register");
+			System.out.println("2. Login");
+			System.out.println("3. Help");
+			System.out.println("4. Exit");
+			
+			System.out.println("Enter your choice: ");
+			choice = sc.nextInt();
+			
+			switch(choice)
+			{
+			case 1:	
+				login.register();
+			case 2:
+				String email, password;
+				boolean success;
+				
+				System.out.println("Enter your email:");
+				email = sc.next();
+				
+				System.out.println("Enter your password:");
+				password = sc.nextLine();
+				
+				success = login.verifyUser(email, password);
+				
+				if (success)
+					System.out.println("Login successful");
+				else
+					System.out.println("Login error.");
+			case 3:
+				
+			case 4:
+				System.out.println("Thank you for using the application. See you next time.");
+				System.exit(0);
+			default:
+				System.out.println("Please enter the valid choice.");
+			}
+			
+			
+			
+		}
+		
+		
+
+		
+	}
+
+}
