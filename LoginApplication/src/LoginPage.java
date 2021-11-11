@@ -10,7 +10,7 @@ public class LoginPage {
 		{
 			System.out.println("1. Register");
 			System.out.println("2. Login");
-			System.out.println("3. Help");
+			System.out.println("3. Forgot password");
 			System.out.println("4. Exit");
 			
 			System.out.println("Enter your choice: ");
@@ -41,7 +41,8 @@ public class LoginPage {
 				System.out.println();
 				break;
 			case 3:
-				System.out.println("Coming soon.");
+				System.out.println("Enter your email:");
+				email = sc.next();
 				break;
 			case 4:
 				System.out.println("Thank you for using the application. See you next time.");
